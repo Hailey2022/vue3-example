@@ -10,25 +10,23 @@
 <body>
     <div id="app">
         <h1>{{message}}</h1>
-        <button @click="increment">Increment</button>
+        <button @click="increment" v-if="seen">{{count}}</button>
         <p>Count: {{count}}</p>
     </div>
     <script>
         const { ref, createApp } = Vue;
-
-        const App = {
+        const app = createApp({
             setup() {
-                const message = ref("Welcome to Vue 3");
+                const message = ref("Welcome to Vue");
                 const count = ref(0)
+                const seen = ref(5)
                 const increment = () => {
                     count.value++;
+                    seen.value--;
                 }
-                return { increment, message, count }
+                return { increment, message, count, seen }
             }
-
-        }
-
-        const app = createApp(App);
+        });
         app.mount('#app');
     </script>
 </body>
