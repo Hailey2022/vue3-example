@@ -16,10 +16,13 @@
   <div id="app" v-cloak>
     {{data}}
     <div>
-      <v-chart style="height: 300px;width: 60%;" :option="option" autoresize></v-chart>
+      <v-chart
+        style="height: 300px; width: 60%"
+        :option="option"
+        autoresize
+      ></v-chart>
     </div>
   </div>
-
 </body>
 
 <script>
@@ -27,36 +30,45 @@
 
   const App = {
     setup() {
-      const data = ref([])
+      const data = ref([]);
       const option = computed(() => {
         return {
           xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           },
           yAxis: {
-            type: 'value'
+            type: 'value',
           },
           series: [
             {
               data: data.value,
-              type: 'line'
-            }
-          ]
-        }
-      })
+              type: 'line',
+            },
+          ],
+        };
+      });
       onMounted(() => {
         setInterval(() => {
-          data.value = [Math.random() * 1000, Math.random() * 1000, Math.random() * 1000, Math.random() * 1000, Math.random() * 1000, Math.random() * 1000, Math.random() * 1000]
-        }, 800)
-      })
+          data.value = [
+            Math.random() * 1000,
+            Math.random() * 1000,
+            Math.random() * 1000,
+            Math.random() * 1000,
+            Math.random() * 1000,
+            Math.random() * 1000,
+            Math.random() * 1000,
+          ];
+        }, 2000);
+      });
       return {
-        option, data
-      }
-    }
-  }
+        option,
+        data,
+      };
+    },
+  };
 
   const app = createApp(App);
-  app.component('v-chart', VueECharts)
+  app.component('v-chart', VueECharts);
   app.mount('#app');
 </script>
