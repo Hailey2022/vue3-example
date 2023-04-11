@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-echarts@6.5.4/dist/index.umd.js"></script>
+</head>
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
+<body>
+  <div id="app" v-cloak>
+    <div style="height: 300px;width: 30%;">
+      <v-chart :option="option" autoresize></v-chart>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  const { createApp, ref, computed } = Vue;
+
+  const App = {
+    setup() {
+      const option = ref({
+        xAxis: {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            data: [150, 230, 224, 218, 135, 147, 240],
+            type: 'line'
+          }
+        ]
+      })
+      return {
+        option
+      }
+    }
+  }
+
+  const app = createApp(App);
+  app.component('v-chart', VueECharts)
+  app.mount('#app');
+</script>
