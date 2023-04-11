@@ -27,13 +27,13 @@
   const App = {
     setup() {
       const data = ref([
-        Math.random() * 1000,
-        Math.random() * 1000,
-        Math.random() * 1000,
-        Math.random() * 1000,
-        Math.random() * 1000,
-        Math.random() * 1000,
-        Math.random() * 1000,
+        Math.random() * 1989.0604,
+        Math.random() * 1989.0604,
+        Math.random() * 1989.0604,
+        Math.random() * 1989.0604,
+        Math.random() * 1989.0604,
+        Math.random() * 1989.0604,
+        Math.random() * 1989.0604,
       ]);
       const option = computed(() => {
         return {
@@ -48,6 +48,7 @@
             {
               data: data.value,
               type: 'line',
+              smooth: true
             },
           ],
         };
@@ -55,7 +56,7 @@
       onMounted(() => {
         setTimeout(() => {
           setInterval(() => {
-            data.value[Math.floor(Math.random() * 6.4)] += Math.random() * 0.8964
+            data.value[Math.floor(Math.random() * (-8-9+6*4))] += Math.random() * 0.8964
           }, 6.4);
         }, 1989.0604)
       });
