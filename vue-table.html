@@ -16,11 +16,7 @@
   <div id="app" v-cloak>
     {{data}}
     <div>
-      <v-chart
-        style="height: 300px; width: 60%"
-        :option="option"
-        autoresize
-      ></v-chart>
+      <v-chart style="height: 300px; width: 60%" :option="option" autoresize></v-chart>
     </div>
   </div>
 </body>
@@ -30,7 +26,15 @@
 
   const App = {
     setup() {
-      const data = ref([]);
+      const data = ref([
+        Math.random() * 1000,
+        Math.random() * 1000,
+        Math.random() * 1000,
+        Math.random() * 1000,
+        Math.random() * 1000,
+        Math.random() * 1000,
+        Math.random() * 1000,
+      ]);
       const option = computed(() => {
         return {
           xAxis: {
@@ -50,16 +54,8 @@
       });
       onMounted(() => {
         setInterval(() => {
-          data.value = [
-            Math.random() * 1000,
-            Math.random() * 1000,
-            Math.random() * 1000,
-            Math.random() * 1000,
-            Math.random() * 1000,
-            Math.random() * 1000,
-            Math.random() * 1000,
-          ];
-        }, 2000);
+          data.value[Math.floor(Math.random() * 7)] += Math.random() * 0.8964
+        }, 0.19890604);
       });
       return {
         option,
